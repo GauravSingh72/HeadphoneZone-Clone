@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Datails page</title>
+    <link rel="stylesheet" href="/styles/Details.css">
+    <link rel="stylesheet" href="./styles/navbar.css">
+    <link rel="stylesheet" href="./styles/footer.css"/>
+    <link rel="icon" type="image/x-icon" href="./Images/favicon (2).png">
+
+</head>
+<body>
+    <div id="navi">
+            
+
+    </div>
+    <div id="dis">
+        <div id="image"></div>
+        <div id="details">
+
+        </div>
+    </div>
+    <div id="wired">
+        <h1>MORE FROM WIRED EARPHONES IN YOUR BUDGET</h1>
+        <P>OUR HEADPHONE GURU`S TOP RECOMMENDATIONS FOR YOU</P>
+    </div>
+
+    <div id="earphoneshow">
+        <div id="btntoleft"><</div>
+        <div id="show"></div>
+        <div id="btntoright">></div>
+    </div>
+
+    <div id="view">
+     <div class="msg">
+         <img src="https://cdn.shopify.com/s/files/1/0153/8863/files/Headphonesty-Media-Reviews-2020.svg?v=1614289805" alt="">
+         <p>"With the price that would not burn your pocket, Final presents E1000 to you with a supreme quality both build and sound quality. Width, depth, lows, mids, and highs are at the well-balanced spot."</p>
+         <b>Read More</b>
+
+
+     </div>
+     <div class="msg">
+<img src="https://cdn.shopify.com/s/files/1/0153/8863/files/Audio-46-Media-Review-Logo-2020.svg?v=1614287363" alt="">
+<p>"Overall the Final E1000 is an amazing value for the price. It will be a great introduction for new audiophiles. Additionally, it is good for anyone looking for a durable, light earphone."</p>
+<b>Read More</b>
+
+
+
+     </div>
+     <div class="msg">
+<img src="https://cdn.shopify.com/s/files/1/0153/8863/files/Major-HiFi-Media-Review-Logo-2020.svg?v=1614287289" alt="">
+<p>"One of the best things about Finals in-ear headphones is the fit. Super light, with an elegant, minimalist design, these buds not only feel comfortable, but provide premium sound isolation."</p>
+<b>Read More</b>
+
+
+     </div>
+     <div class="msg">
+<img src="https://cdn.shopify.com/s/files/1/0153/8863/files/Head-Fi-Media-Review-Logo-2020.svg?v=1614287289" alt="">
+
+<p>"E1000 has superb value given that it comes with final tips and, it also comes with a really surprising and wonderful sound signature that I believe anyone will enjoy (neutral head speaking)."</p>
+
+<b>Read More</b>
+     </div>
+       
+    </div>
+
+    <div id="headphone_show">
+        <div id="headtoleft"><</div>
+        <div id="showheadphone"></div>
+        <div id="headtoright">></div>
+    </div>
+    <div id="footer">
+
+    </div>
+</body>
+<script type="module">
+    import nav from "./scripts/navbar.js"
+    var navi=document.getElementById("navi")
+    navi.innerHTML=nav()
+let loc_data=localStorage.getItem("headPhoneuserData")
+    if(loc_data.length!=0){
+        document.getElementById("login_acc").innerText="Account"
+    }
+    else{
+        document.getElementById("login_acc").innerText="Login"
+    }
+
+    let acc=document.getElementById("login_acc")
+    if(acc.innerText="Account"){
+        acc.href="About.html"
+    }
+    
+    if(localStorage.getItem("Additemtocart")!=null){
+    let lc_len=localStorage.getItem("counter")
+    var lc_len_int=parseInt(lc_len)
+    console.log(typeof(lc_len_int))
+if(lc_len_int>0){
+    document.getElementById("cart").innerText=lc_len_int
+
+}
+}
+else{
+    document.getElementById("cart").innerText=0
+    lc_len_int=0
+    lc_len=JSON.stringify(lc_len_int)
+    localStorage.setItem("counter",lc_len)
+}
+</script>
+<script type="module">
+    import footer from "./scripts/footer.js"
+    var footerr=document.getElementById("footer")
+    footerr.innerHTML=footer()
+</script>
+<script src="./scripts/navbar.js"></script>
+<script src="./scripts/Details.js"></script>
+</html>

@@ -1,0 +1,78 @@
+* {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+#details {
+  padding-top: 140px;
+  height: 400px;
+}
+#disbody {
+  width: 80%;
+  margin: 40px auto;
+  height: 300px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+#lft {
+  display: flex;
+  flex-direction: column;
+  width: 20%;
+  background-color: rgba(233, 233, 233, 0.705);
+}
+#name_dis {
+  text-align: center;
+  font-size: 20px;
+  color: gray;
+  text-transform: uppercase;
+}
+#lft button {
+  height: 40px;
+  border: none;
+  text-align: left;
+  padding-left: 10px;
+  font-weight: bold;
+  font-size: 13px;
+}
+#lft button:hover {
+  background-color: gray;
+  color: white;
+}
+#btnpress {
+  background-color: gray;
+  background-color: gray;
+  color: white;
+}
+#namediv {
+  width: 20%;
+}
+#namediv p {
+  margin: 20px 0px;
+}
+#namediv button {
+  height: 40px;
+  font-size: 20px;
+  font-weight: bold;
+  border-radius: 20px;
+  background-color: blue;
+  color: white;
+  border: none;
+  width: 100%;
+}
+#rght {
+  height: 240px;
+  display: flex;
+
+  width: 78%;
+}
+#retrive_data p {
+  margin: 20px 0px;
+  font-weight: bold;
+  margin-left: 10px;
+}
+#retrive_data a {
+  color: blue;
+  margin-left: 10px;
+  margin-top: 20px;
+}

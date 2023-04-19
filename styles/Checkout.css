@@ -1,0 +1,198 @@
+#container {
+  display: flex;
+  height: 100%;
+}
+body {
+  height: 1200px;
+}
+#cartDetails {
+  box-sizing: border-box;
+  padding-left: 100px;
+  padding-top: 100px;
+  padding-right: 150px;
+  background-color: rgb(215, 212, 212);
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+  height: 50%;
+}
+#adressDetails {
+  width: 60%;
+  height: 100%;
+  padding-left: 120px;
+  padding-top: 70px;
+  padding-right: 100px;
+}
+#promoCode {
+  padding-top: 30px;
+  padding-bottom: 30px;
+  border-top: 3px solid rgb(174, 169, 169);
+  border-bottom: 3px solid rgb(174, 169, 169);
+}
+#promoCode > form {
+  display: flex;
+  justify-content: space-around;
+}
+#amountDetails {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  border-bottom: 3px solid rgb(174, 169, 169);
+}
+button {
+  background-color: blue;
+  color: white;
+}
+#amountDetails > div {
+  display: flex;
+  justify-content: space-between;
+}
+#totalDetails {
+  padding-top: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+#products {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: auto;
+}
+.product {
+  display: flex;
+  height: 75px;
+}
+.detailsDiv {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  width: 80%;
+  padding-left: 15px;
+}
+.nameElement {
+  margin-top: 0px;
+  margin-bottom: 0px;
+  padding-top: 15px;
+}
+.colorElement {
+  margin-top: 0px;
+}
+.image {
+  width: 70px;
+  height: 70px;
+  border-radius: 10px;
+}
+.imageDiv {
+  position: relative;
+  text-align: center;
+  color: white;
+  border-radius: 10px;
+}
+.qntOnImage {
+  position: absolute;
+  top: 1px;
+  left: 65px;
+  font-size: 20px;
+  background-color: grey;
+  border-radius: 100%;
+}
+#pageNavigator a {
+  text-decoration: none;
+  color: grey;
+}
+#contactinformation {
+  display: flex;
+  justify-content: space-between;
+}
+#offersCheckBox {
+  display: flex;
+  padding: 5px;
+}
+#offersCheckBox p {
+  margin-top: 0px;
+}
+#gstDiv {
+  display: flex;
+  flex-direction: column;
+}
+#gstDiv div {
+  display: flex;
+}
+#gstDiv > #gstDiv1 h2 {
+  margin-top: 0px;
+  padding-left: 10px;
+  padding-top: 5px;
+  padding-right: 20px;
+}
+#gstDiv > #gstDiv1 p {
+  padding-top: 10px;
+}
+#gstDiv1 {
+  background-color: yellow;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  padding: 10px 10px 0px 10px;
+}
+#gstDiv3 {
+  background-color: yellow;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  padding: 15px 10px 0px 20px;
+}
+#gstDiv2 {
+  border-left: 3px solid yellow;
+  border-right: 3px solid yellow;
+  padding-top: 20px;
+  padding-bottom: 10px;
+  display: flex;
+  justify-content: space-around;
+}
+
+#gstDiv div > p {
+  margin-top: 0px;
+}
+form {
+  display: flex;
+  flex-direction: column;
+}
+form input {
+  height: 50px;
+  margin: 8px;
+  border-radius: 5px;
+}
+#formNameDiv input {
+  width: 96%;
+}
+#adressPlaceDiv {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+#checkOutBoxDiv {
+  display: flex;
+  margin-top: 0px;
+}
+#checkOutBoxDiv p {
+  margin-bottom: 0px;
+}
+#checkOutBoxDiv input {
+  margin-top: 0px;
+}
+#submitDiv {
+  display: flex;
+  justify-content: right;
+}
+#submitButton {
+  justify-content: center;
+  width: 30%;
+  border: 1px solid blue;
+  background-color: blue;
+  color: white;
+}
+#footer {
+  border-top: 1px solid rgb(206, 203, 203);
+  padding-top: 20px;
+}
+#footer a {
+  text-decoration: none;
+  color: grey;
+  padding: 10px;
+}

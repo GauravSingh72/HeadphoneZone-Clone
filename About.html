@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account</title>
+    <link rel="icon" type="image/x-icon" href="./Images/favicon (2).png">
+
+    <link rel="stylesheet" href="./styles/navbar.css">
+    <link rel="stylesheet" href="./styles/About.css">
+    <link rel="stylesheet" href="/styles/footer.css" />
+</head>
+
+<body>
+    <div id="navi">
+
+    </div>
+    <div>
+    
+    <div id="details">
+<div id="name_dis">
+    <h3 id="name_heading">Gaurav Singh</h3>
+</div>
+<div id="disbody">
+    <div id="lft">
+        <button onclick="about()" id="profile">MY PROFILE</button>
+        <button onclick="gotocart()">MY ORDERS</button>
+        <button>CLUB AUDIOPHILE REWARDS</button>
+        <button>DELIVERY ADDRESS</button>
+        <button>RECENTLY VIEWED PRODUCTS</button>
+        <button>CHANGE PASSWORD</button>
+    </div>
+        <div id="rght">
+
+
+        </div>
+</div>
+        
+    </div>
+
+<div id="footer">
+
+</div>
+</body>
+<script type="module">
+
+    import nav from "./scripts/navbar.js"
+    var navi = document.getElementById("navi")
+    navi.innerHTML = nav()
+
+    let loc_data=localStorage.getItem("headPhoneuserData")
+    if(loc_data.length!=0){
+        document.getElementById("login_acc").innerText="Account"
+    }
+    else{
+        document.getElementById("login_acc").innerText="Login"
+    }
+
+    let acc=document.getElementById("login_acc")
+    if(acc.innerText="Account"){
+        acc.href="About.html"
+    }
+    
+    if(localStorage.getItem("Additemtocart")!=null){
+    let lc_len=localStorage.getItem("counter")
+    var lc_len_int=parseInt(lc_len)
+    console.log(typeof(lc_len_int))
+if(lc_len_int>0){
+    document.getElementById("cart").innerText=lc_len_int
+
+}
+}
+else{
+    document.getElementById("cart").innerText=0
+    lc_len_int=0
+    lc_len=JSON.stringify(lc_len_int)
+    localStorage.setItem("counter",lc_len)
+
+
+}
+
+
+</script>
+<script type="module">
+
+
+    import footer from "./scripts/footer.js"
+    var footerr = document.getElementById("footer")
+    footerr.innerHTML = footer()
+</script>
+
+<script>
+    var abt = JSON.parse(localStorage.getItem("headPhoneuserData"))
+    abt.forEach(e => {
+        
+        document.getElementById("name_heading").innerText=`HELLO ${e.firstName}`
+    });
+    function gotocart(){
+window.location.href="Cart.html"
+    }
+function about(){
+   document.getElementById("profile").setAttribute("id","btnpress")
+    abt.forEach(e=>{
+        var RIGHT=document.getElementById("rght")
+        RIGHT.innerHTML=""
+        var div_title=document.createElement("div")
+        div_title.setAttribute("id","namediv")
+        var t_fname=document.createElement("p")
+        t_fname.innerText="First Name :"
+        var t_lname=document.createElement("p")
+        t_lname.innerText="Last Name :"
+        var t_email=document.createElement("p")
+        t_email.innerText="Email :"
+     t_btn=document.createElement("button")
+     t_btn.innerText="Edit"
+        var t_contact=document.createElement("p")
+        t_contact.innerText="Contact Number :"
+        div_title.append(t_fname,t_lname,t_email,t_contact,t_btn)
+        
+    var r_data=document.createElement("div")
+    r_data.setAttribute("id","retrive_data")
+    var r_fname=document.createElement("p")
+    r_fname.innerText=e.firstName
+    var r_lname=document.createElement("p")
+    r_lname.innerText=e.lastName
+    var r_email=document.createElement("p")
+    r_email.innerText=e.email
+var r_number=document.createElement("p");
+r_number.innerText="9337673844"
+r_logout=document.createElement("a")
+r_logout.innerText="Logout"
+r_data.append(r_fname,r_lname,r_email,r_number,r_logout)
+
+    RIGHT.append(div_title,r_data)
+    })
+   
+  
+}
+</script>
+
+</html>

@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>check out page</title>
+    <link rel="stylesheet" href="./styles/Checkout.css">
+    <link rel="icon" type="image/x-icon" href="./Images/favicon (2).png">
+    
+    <link rel="stylesheet" href="./styles/navbar.css">
+    <link rel="stylesheet" href="./styles/footer.css"/>
+</head>
+<body>
+    <div id="navi">
+
+    </div>
+    <div id="container">
+        <div id="adressDetails">
+            <div>
+                <div id="logoDiv">
+                    <img src="https://cdn.shopify.com/s/files/1/0153/8863/files/LOGO_b858cb3f-4fc8-4b60-9a75-e863e311bcc4.png?118257" alt="logo">
+                </div>
+                <div id="pageNavigator">
+                    <p><a href="./Cart.html">Cart</a>><a href="./Checkout.html">Information</a>><a href="./Payement.html">payment</a></p>
+                </div>
+                <div id="contactinformation">
+                    <h3>Contact Information</h3><p style="color:grey">Alredy have an account? <a href="./Login.html" style="color:grey;text-decoration:none"> Log in</a></p>
+                </div>
+                <div>
+                    <div style="border: 2px solid grey; border-radius: 5px;">
+                       
+                        <input type="email" style="border: 0px solid grey; width:99%;height: 50px;font-size: 15px;" id="emailEntry" placeholder="Enter your email">
+                    </div >
+                    <div id="offersCheckBox"><input type="checkbox"><p>Email me with news and offers</p></div>
+                </div>
+                <div id="gstDiv">
+                    <div id="gstDiv1">
+                        <h2>GST details:</h2><p>Is your organisation registred under GST ACT in india ?</p>
+                    </div>
+                    <div id="gstDiv2">
+                        <div> <input type="checkbox"><p>Yes, registred under GST ACT</p></div>
+                        <div><input type="checkbox"><p>No, not registred under GST ACT.</p></div>                    
+                        
+                    </div>
+                    <div id="gstDiv3">
+                        <p>Please enter your GST number now. Once order has been placed, no modifications can be made to 
+                        <br>add your GST number to the invoice</p>
+                    </div>
+                </div>
+                <div id="formDiv">
+                    <h2>Shipping adress</h2>
+                    <form action=""id="adress">
+                        <input type="text" placeholder="Country/region" id="countryName">
+                        <div id="formNameDiv">
+                            <input type="text" placeholder="first name" id="firstName">
+                            <input type="text" placeholder="last name" id="lastName">
+                        </div>
+                        <input type="text" placeholder="Adress" id="adress">
+                        <div id="adressPlaceDiv">
+                            <input type="text" placeholder="City" id="city">
+                            <input type="text" placeholder="State" id="state">
+                            <input type="number" placeholder="PIN CODE" id="pinCode">
+                        </div>
+                        <input type="number" placeholder="Phone" id="phoneNo">
+                        <div id="checkOutBoxDiv">
+                            <input type="checkbox"> <p>Save this information for next time</p>
+                        </div>
+                        <div id="submitDiv">
+                            <input type="submit" value="Continue to payment method" id="submitButton">
+                        </div>
+                    </form>
+                </div>
+                <div><h4>Cash on Delivery is Currently not availble to ensure COVID-19 safety protocals.</h2></div>
+                <div id="footer"> <a href="">Refund policy</a> <a href="">Privacy Policy </a> <a href="">Terms of service</a></div>
+            </div>
+        </div>
+        <div id="cartDetails">
+            <div id="products">
+                
+            </div>
+            <div id="promoCode">
+                <form action="" id="promoForm">
+                    <input type="text" placeholder="Gift card or Dicount code"id="inputPromo" style="border-radius:2px; width: 380px;height: 40px;">
+                    <input type="submit" value="Apply" id="applybutton" style="color:white;border-radius: 10px;background-color: blue;width: 80px; height: 50px; font-size: large;">
+                </form>
+            </div>
+            <div id="amountDetails">
+                <div>
+                    <p>Subtotal</p>
+                <p id="subTootalTag"></p>
+                </div>
+                <div>
+                    <p>Shipping</p>
+                    <p>Free</p>
+                </div>
+            </div>
+            <div id="totalDetails">
+                <p> Total</p>
+                <p id="totalTag"></p>
+            </div>
+        </div>
+    </div>    
+    <div id="footer1">
+
+    </div>
+</body>
+
+
+<script type="module">
+    import nav from "./scripts/navbar.js"
+    var navi=document.getElementById("navi")
+    navi.innerHTML=nav()
+let loc_data=localStorage.getItem("headPhoneuserData")
+    if(loc_data.length!=0){
+        document.getElementById("login_acc").innerText="Account"
+    }
+    else{
+        document.getElementById("login_acc").innerText="Login"
+    }
+
+    let acc=document.getElementById("login_acc")
+    if(acc.innerText="Account"){
+        acc.href="About.html"
+    }
+    
+    if(localStorage.getItem("Additemtocart")!=null){
+    let lc_len=localStorage.getItem("counter")
+    var lc_len_int=parseInt(lc_len)
+    console.log(typeof(lc_len_int))
+      if(lc_len_int>0){
+    document.getElementById("cart").innerText=lc_len_int
+
+}
+}
+else{
+    document.getElementById("cart").innerText=0
+    lc_len_int=0
+    lc_len=JSON.stringify(lc_len_int)
+    localStorage.setItem("counter",lc_len)
+
+
+}
+</script>
+
+<script type="module">
+   
+
+    import footer from "./scripts/footer.js"
+    var footerr=document.getElementById("footer1")
+    footerr.innerHTML=footer()
+</script>
+
+
+<script src="./scripts/navbar.js"></script>
+<script>
+
+
+    window.addEventListener("load",checkOutPageCreator)
+
+    var cartArr=JSON.parse(localStorage.getItem("Additemtocart")) || [];   
+    console.log(cartArr)
+    var total=localStorage.getItem("headphoneCheckOutTotal");
+    var productsDiv=document.querySelector("#products");
+
+    if(cartArr.length==1){       
+        productsDiv.setAttribute("style","height:77px");
+    }else if(cartArr.length==2){
+        productsDiv.setAttribute("style","height:154px");
+    }else{
+        productsDiv.setAttribute("style","height:235px");
+    }
+
+    function checkOutPageCreator(){
+        subtotalTag();
+        totalTag();
+        productsWindow();
+    }
+
+    function subtotalTag(){
+        var subTag=document.querySelector("#subTootalTag");
+        subTag.innerText="₹"+total;
+    }
+
+    function totalTag(){
+        var totTag=document.querySelector("#totalTag");
+        totTag.innerText="₹"+total;
+    }
+
+    function productsWindow(){
+        cartArr.forEach(element => {
+            var product=document.createElement("div");
+            product.setAttribute("class","product");
+            
+            var imageDiv=document.createElement("div");
+            imageDiv.setAttribute("class","imageDiv");
+            var imageUrllink=element.imge_url;
+            var imageElement=document.createElement("img");
+            imageElement.setAttribute("class","image");
+            imageElement.src=imageUrllink;
+            var qntElement=document.createElement("div");
+            qntElement.setAttribute("class","qntOnImage");
+            qntElement.innerText=element.quantity;
+            console.log(qntElement)
+            imageDiv.append(imageElement,qntElement);
+            
+
+
+            var detailsDiv=document.createElement("div");
+            detailsDiv.setAttribute("class","detailsDiv");
+            var nameElement=document.createElement("h5");
+            nameElement.setAttribute("class","nameElement");
+            nameElement.innerText=element.name;
+            var colorElement=document.createElement("p");
+            colorElement.setAttribute("class","colorElement");
+            colorElement.innerText=element. productColor;
+            detailsDiv.append(nameElement,colorElement);
+
+            var priceDiv=document.createElement("div");
+            priceDiv.setAttribute("class", "priceDiv");
+            var price=((parseInt(element.price1))*(parseInt(element.quantity)));
+            var priceElement=document.createElement("h5");
+            priceElement.setAttribute("class","priceElement");
+            priceElement.innerText="₹"+price+".00";
+            priceDiv.append(priceElement);
+
+            product.append(imageDiv,detailsDiv,priceDiv);
+            
+            document.querySelector("#products").append(product);
+        });
+    }
+   document.querySelector("#adress").addEventListener("submit",paymentPageNavigator);
+
+
+   function paymentPageNavigator(){
+       event.preventDefault();
+       console.log(1)
+       window.location.href="./Payement.html";
+   }
+
+</script>
+
+</html>

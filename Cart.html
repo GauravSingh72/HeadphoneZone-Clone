@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>cart Page</title>
+    <link rel="stylesheet" href="./styles/Cart.css" />
+    <link rel="icon" type="image/x-icon" href="./Images/favicon (2).png" />
+
+    <link rel="stylesheet" href="./styles/navbar.css" />
+    <link rel="stylesheet" href="/styles/footer.css" />
+  </head>
+  <body>
+    <div id="navi"></div>
+
+    <div id="container">
+      <div id="productDetails">
+        <h1 style="text-align: center; margin-bottom: 80px;">CART</h1>
+        <div id="heading">
+          <div id="image" style="padding-left: 0 px">
+            <h5 style="padding-left: opx">PRODUCT</h5>
+          </div>
+          <div id="details"><h5>DETAILS</h5></div>
+          <div id="qnt"><h5>QUANTITY</h5></div>
+          <div id="total"><h5>TOTAL</h5></div>
+        </div>
+        <div id="productsBody"></div>
+      </div>
+      <div id="checkoutDetails">
+        <div id="checkoutDetailsdiv">
+          <div>
+            <h3>TOTAL</h3>
+            <h3 id="totalTag"></h3>
+          </div>
+          <div>
+            <p>
+              This is the final price inclusive of taxes. <br />Shipping is
+              always free. <br />No hidden surprises. 😃
+            </p>
+          </div>
+          <div id="checkoutButtone">
+            <button>CHECKOUT</button>
+          </div>
+        </div>
+        <p style="color: grey;margin-top: 20px;">
+          <a href="./Login.html" style="text-decoration: none; color: rgb(10, 41, 221)"
+            >Login</a
+          >
+          to earn 72340 Club Audiophile points. <br />
+          No account?<a
+            href="./Signup.html"
+            style="text-decoration: none; color: rgb(10, 41, 221)"
+          >
+            Sign up now.</a
+          >
+        </p>
+      </div>
+    </div>
+    <div id="footer"></div>
+  </body>
+  <script type="module">
+    import nav from "./scripts/navbar.js";
+    var navi = document.getElementById("navi");
+    navi.innerHTML = nav();
+    let loc_data = localStorage.getItem("headPhoneuserData");
+    if (loc_data.length != 0) {
+      document.getElementById("login_acc").innerText = "Account";
+    } else {
+      document.getElementById("login_acc").innerText = "Login";
+    }
+
+    let acc = document.getElementById("login_acc");
+    if ((acc.innerText = "Account")) {
+      acc.href = "About.html";
+    }
+
+    if (localStorage.getItem("Additemtocart") != null) {
+      let lc_len = localStorage.getItem("counter");
+      var lc_len_int = parseInt(lc_len);
+      console.log(typeof lc_len_int);
+      if (lc_len_int > 0) {
+        document.getElementById("cart").innerText = lc_len_int;
+      }
+    } else {
+      document.getElementById("cart").innerText = 0;
+      lc_len_int = 0;
+      lc_len = JSON.stringify(lc_len_int);
+      localStorage.setItem("counter", lc_len);
+    }
+  </script>
+
+  <script type="module">
+    import footer from "./scripts/footer.js";
+    var footerr = document.getElementById("footer");
+    footerr.innerHTML = footer();
+  </script>
+
+  <script src="./scripts/navbar.js"></script>
+  <script>
+    window.addEventListener("load", totalAmount);
+    window.addEventListener("load", productbar);
+    document
+      .querySelector("#checkoutButtone")
+      .addEventListener("click", checkoutfunction);
+
+    var cartArr = JSON.parse(localStorage.getItem("Additemtocart")) || [];
+
+    function productbar() {
+      var total = 0;
+      if (cartArr.length == 0) {
+        document.querySelector("#container").innerHTML = "";
+        var emptyCart = document.createElement("h3");
+        emptyCart.innerText = "Your cart is empty";
+        var emptyCartButton = document.createElement("button");
+        emptyCartButton.innerText = "START SHOPPING";
+        emptyCartButton.setAttribute("id", "emptyCartButton");
+        emptyCartButton.addEventListener("click", function () {
+          window.location.href = "./index.html";
+        });
+        var emptyCartDiv = document.createElement("div");
+        emptyCartDiv.setAttribute("id", "emptyCartDiv");
+        emptyCartDiv.append(emptyCart, emptyCartButton);
+        document.querySelector("#container").append(emptyCartDiv);
+      } else {
+        cartArr.forEach(function (element, i) {
+          var product = document.createElement("div");
+          product.setAttribute("class", "product");
+
+          var imageDiv = document.createElement("div");
+          imageDiv.setAttribute("class", "imageDiv");
+          var imgUrlElement = document.createElement("img");
+          var imageUrl = element.imge_url;
+          imgUrlElement.src = imageUrl;
+          imageDiv.append(imgUrlElement);
+
+          var detailsDiv = document.createElement("div");
+          detailsDiv.setAttribute("class", "detailsDiv");
+          var productNameElement = document.createElement("h4");
+          productNameElement.innerText = element.name;
+          var productPriceElement = document.createElement("h6");
+          productPriceElement.innerText = "₹ " + element.price1;
+          detailsDiv.append(productNameElement, productPriceElement);
+
+          var qntDiv = document.createElement("div");
+          qntDiv.setAttribute("class", "qntDiv");
+          var addButtonPlus = document.createElement("button");
+          var addButtonMinus = document.createElement("button");
+          addButtonPlus.setAttribute("class", "qntadd");
+          addButtonMinus.setAttribute("class", "qntadd");
+          addButtonPlus.addEventListener("click", function () {
+            var qntyplus = parseInt(element.quantity);
+            qntyplus++;
+            element.quantity = qntyplus;
+            console.log(qntyplus);
+            plusFunction(cartArr);
+          });
+          addButtonMinus.addEventListener("click", function () {
+            var qntyminus = parseInt(element.quantity);
+            qntyminus--;
+            if (qntyminus <= 0) {
+              removeItemFromCartData(i);
+            } else {
+              element.quantity = qntyminus;
+              plusFunction(cartArr);
+            }
+          });
+
+          addButtonPlus.innerText = "+";
+          addButtonMinus.innerText = "-";
+          var qnt = document.createElement("p");
+          qnt.innerText = element.quantity;
+          qnt.setAttribute("class", "qntBox");
+          var qntAddDiv = document.createElement("div");
+          qntAddDiv.setAttribute("class", "qntAddDiv");
+          qntAddDiv.append(addButtonPlus, qnt, addButtonMinus);
+          var remove = document.createElement("button");
+          remove.innerText = "Remove";
+          remove.setAttribute("id", "removeButton");
+          qntDiv.append(qntAddDiv, remove);
+          remove.addEventListener("click", function () {
+            alert("Item removed from the Cart");
+            removeItemFromCartData(i);
+          });
+
+          var totDiv = document.createElement("div");
+          totDiv.setAttribute("class", "totDiv");
+          var discountPriceElement = document.createElement("h3");
+          discountPriceElement.innerText =
+            "₹ " + +element.price1 * +element.quantity;
+          var strike = document.createElement("s");
+          strike.innerText = "₹ " + +element.price2 * +element.quantity;
+          totDiv.append(discountPriceElement, strike);
+
+          total += +element.price1 * +element.quantity;
+
+          product.append(imageDiv, detailsDiv, qntDiv, totDiv);
+
+          document.querySelector("#productsBody").append(product);
+        });
+        totalAmount(total);
+      }
+    }
+
+    function plusFunction(cartArr) {
+      localStorage.setItem("headphoneCartItems", JSON.stringify(cartArr));
+      document.querySelector("#productsBody").innerHTML = "";
+
+      productbar();
+    }
+    function checkoutfunction() {
+      window.location.href = "Payment.html";
+    }
+    function totalUpdate(tot) {
+      localStorage.setItem("headphoneCheckOutTotal", tot);
+    }
+
+    function totalAmount(total) {
+      document.querySelector("#totalTag").innerText = "₹ " + total;
+      totalUpdate(total);
+    }
+    function removeItemFromCartData(index) {
+      cartArr.splice(index, 1);
+      localStorage.setItem("headphoneCartItems", JSON.stringify(cartArr));
+      window.location.reload();
+      return;
+    }
+  </script>
+</html>

@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>payment page</title>
+    <link rel="stylesheet" href="./styles/Payment.css" />
+    <link rel="icon" type="image/x-icon" href="./Images/favicon (2).png" />
+
+    <link rel="stylesheet" href="./styles/navbar.css" />
+    <link rel="stylesheet" href="./styles/footer.css" />
+  </head>
+  <body>
+    <div id="navi"></div>
+
+    <div id="container">
+      <div id="CardDetails">
+        <div id="cardDetailsDiv">
+          <h1 style="margin-bottom: 20px" id="paymentAmount"></h1>
+          <form action="" id="paymentPage">
+            <input
+              type="number"
+              placeholder="Enter Card Details"
+              id="cardNumber"
+            />
+            <div id="cardMonthYear">
+              <select name="" id="cardMonth">
+                <option value="select">select</option>
+                <option value="01">01</option>
+                <option value="02">02</option>
+                <option value="03">03</option>
+                <option value="04">04</option>
+                <option value="05">05</option>
+                <option value="06">06</option>
+                <option value="07">07</option>
+                <option value="08">08</option>
+                <option value="09">09</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+              </select>
+              <input type="number" placeholder="YYYY" id="cardYear" />
+              <input type="password" placeholder="CVV" id="cardCvv" />
+            </div>
+            <input
+              type="text"
+              placeholder="Enter card holder name"
+              id="cardName"
+            />
+            <input type="submit" id="submitbutton" />
+          </form>
+        </div>
+      </div>
+      <div id="cartDetails">
+        <div id="products"></div>
+        <div id="promoCode">
+          <form action="" id="promoForm">
+            <input
+              type="text"
+              placeholder="Gift card or Dicount code"
+              id="inputPromo"
+            />
+            <input
+              type="submit"
+              value="Apply"
+              id="applybutton"
+            />
+          </form>
+        </div>
+        <div id="amountDetails">
+          <div>
+            <p>Subtotal</p>
+            <p id="subTootalTag"></p>
+          </div>
+          <div>
+            <p>Shipping</p>
+            <p>Free</p>
+          </div>
+        </div>
+        <div id="totalDetails">
+          <p>Total</p>
+          <p id="totalTag"></p>
+        </div>
+      </div>
+    </div>
+    <div id="footer"></div>
+  </body>
+  <script type="module">
+    import nav from "./scripts/navbar.js";
+    var navi = document.getElementById("navi");
+    navi.innerHTML = nav();
+    let loc_data = localStorage.getItem("headPhoneuserData");
+    if (loc_data.length != 0) {
+      document.getElementById("login_acc").innerText = "Account";
+    } else {
+      document.getElementById("login_acc").innerText = "Login";
+    }
+
+    let acc = document.getElementById("login_acc");
+    if ((acc.innerText = "Account")) {
+      acc.href = "About.html";
+    }
+
+    if (localStorage.getItem("Additemtocart") != null) {
+      let lc_len = localStorage.getItem("counter");
+      var lc_len_int = parseInt(lc_len);
+      console.log(typeof lc_len_int);
+      if (lc_len_int > 0) {
+        document.getElementById("cart").innerText = lc_len_int;
+      }
+    } else {
+      document.getElementById("cart").innerText = 0;
+      lc_len_int = 0;
+      lc_len = JSON.stringify(lc_len_int);
+      localStorage.setItem("counter", lc_len);
+    }
+  </script>
+
+  <script type="module">
+    import footer from "./scripts/footer.js";
+    var footerr = document.getElementById("footer");
+    footerr.innerHTML = footer();
+  </script>
+
+  <script src="./scripts/navbar.js"></script>
+
+  <script>
+    window.addEventListener("load", checkOutPageCreator);
+
+    var cartArr = JSON.parse(localStorage.getItem("Additemtocart")) || [];
+    var total = localStorage.getItem("headphoneCheckOutTotal");
+    var productsDiv = document.querySelector("#products");
+
+    if (cartArr.length == 1) {
+      productsDiv.setAttribute("style", "height:77px");
+    } else if (cartArr.length == 2) {
+      productsDiv.setAttribute("style", "height:154px");
+    } else {
+      productsDiv.setAttribute("style", "height:235px");
+    }
+
+    function checkOutPageCreator() {
+      subtotalTag();
+      totalTag();
+      productsWindow();
+    }
+
+    function subtotalTag() {
+      var subTag = document.querySelector("#subTootalTag");
+      subTag.innerText = "₹" + total;
+    }
+
+    function totalTag() {
+      var totTag = document.querySelector("#totalTag");
+      totTag.innerText = "₹" + total;
+    }
+
+    function productsWindow() {
+      cartArr.forEach((element) => {
+        var product = document.createElement("div");
+        product.setAttribute("class", "product");
+
+        var imageDiv = document.createElement("div");
+        imageDiv.setAttribute("class", "imageDiv");
+        var imageUrllink = element.imge_url;
+        var imageElement = document.createElement("img");
+        imageElement.setAttribute("class", "image");
+        imageElement.src = imageUrllink;
+        var qntElement = document.createElement("div");
+        qntElement.setAttribute("class", "qntOnImage");
+        qntElement.innerText = element.quantity;
+
+        imageDiv.append(imageElement, qntElement);
+
+        var detailsDiv = document.createElement("div");
+        detailsDiv.setAttribute("class", "detailsDiv");
+        var nameElement = document.createElement("h5");
+        nameElement.setAttribute("class", "nameElement");
+        nameElement.innerText = element.name;
+        var colorElement = document.createElement("p");
+
+        detailsDiv.append(nameElement, colorElement);
+
+        var priceDiv = document.createElement("div");
+        priceDiv.setAttribute("class", "priceDiv");
+        var price = parseInt(element.price1) * parseInt(element.quantity);
+        var priceElement = document.createElement("h5");
+        priceElement.setAttribute("class", "priceElement");
+        priceElement.innerText = "₹" + price + ".00";
+        priceDiv.append(priceElement);
+
+        product.append(imageDiv, detailsDiv, priceDiv);
+
+        document.querySelector("#products").append(product);
+      });
+    }
+    document
+      .querySelector("#paymentPage")
+      .addEventListener("submit", cardValidate);
+    var totalAmount = parseInt(localStorage.getItem("headphoneCheckOutTotal"));
+    var totalAmountTag = document.querySelector("#paymentAmount");
+    totalAmountTag.innerText = "The amount to pay is  " + "₹" + totalAmount;
+
+    function cardValidate() {
+      event.preventDefault();
+      var cardNumber = document.querySelector("#cardNumber").value;
+      var cardMonth = document.querySelector("#cardMonth").value;
+      var cardYear = document.querySelector("#cardYear").value;
+      var cardCvv = document.querySelector("#cardCvv").value;
+      var cardName = document.querySelector("#cardName").value;
+
+      if (
+        cardNumber.length == 16 &&
+        cardMonth != "select" &&
+        cardYear.length == 4 &&
+        parseInt(cardYear) >= 2022 &&
+        cardCvv.length == 3 &&
+        cardName !== ""
+      ) {
+        alert("Your order is successfully placed continue to shop");
+        window.location.href = "index.html";
+      } else {
+        alert("Error");
+      }
+    }
+  </script>
+</html>

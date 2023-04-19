@@ -1,0 +1,621 @@
+* {
+  padding: 0;
+  margin: 0;
+  font-family: Roboto, sans-serif;
+  width: auto;
+}
+
+#footer {
+  z-index: 1;
+  height: 200px;
+  color: gray;
+}
+
+#navi {
+  z-index: 1;
+}
+.firstSlide {
+  position: relative;
+  width: 100%;
+}
+.image {
+  display: block;
+  width: 100%;
+}
+
+.overlay {
+  position: absolute;
+  bottom: 25%;
+  left: 0;
+  right: 20%;
+  overflow: hidden;
+  height: 0;
+  transition: 0.5s ease;
+}
+
+.firstSlide:hover .overlay {
+  height: 100%;
+}
+.text {
+  display: flex;
+  flex-wrap: wrap;
+  width: 50%;
+  color: white;
+  position: absolute;
+  top: 70%;
+  left: 30%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+.text1 {
+  font-size: 60px;
+}
+
+.text3 {
+  background-color: white;
+  color: black;
+  font-weight: 800;
+  width: auto;
+  padding: 20px 30px 20px 30px;
+}
+.text3:hover {
+  background-color: rgb(234, 234, 234);
+}
+img {
+  width: 100%;
+  height: 80%;
+}
+h2 {
+  font-size: 30px;
+  text-align: center;
+}
+#video,
+iframe {
+  margin-top: 50px;
+  width: 100%;
+  height: 1000px;
+  margin-bottom: 10vw;
+}
+
+#homeAudioImg > div {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 200px;
+  font-size: 10px;
+  color: brown;
+  padding: auto;
+  margin: auto;
+  margin-bottom: 10px;
+}
+#homeAudioImg {
+  display: grid;
+  grid-template-columns: repeat(9, 1fr);
+  grid-template-rows: repeat(2, auto);
+  gap: 5px;
+  margin: auto;
+  width: 90%;
+}
+div > a {
+  text-decoration: none;
+  color: black;
+}
+@media all and (min-width: 64px) and (max-width: 740px) {
+  #homeAudioImg {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .newLaunchesImg {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+@media all and (min-width: 64px) and (max-width: 740px) {
+  #afterVideo {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+#note {
+  display: block;
+  margin: auto;
+  display: 1px solid red;
+  width: 80%;
+}
+#note > p {
+  text-align: center;
+}
+p {
+  margin: 1px;
+}
+.video {
+  margin-top: 100px;
+}
+#afterVideo {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  margin: auto;
+  margin-top: 50px;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(205, 205, 205);
+  width: 95%;
+  height: 800px;
+}
+#afterVideo > div {
+  margin-left: +50px;
+}
+#afterVideo > div + div {
+  text-align: left;
+  margin-right: +160px;
+}
+.text2 {
+  color: white;
+  text-align: center;
+}
+h5 {
+  text-align: left;
+}
+span {
+  text-align: center;
+}
+
+.newLaunchesImg {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  width: 95%;
+  gap: 50px;
+  margin: 50px auto 50px auto;
+}
+
+.textOnImg {
+  position: relative;
+  text-align: center;
+}
+.textOnImg div > img {
+  border-radius: 10px;
+  width: 100%;
+}
+.zoom:hover {
+  transform: scale(1.01);
+}
+#text-block {
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 80%;
+  padding: none;
+  transform: translate(-50%, -50%);
+  color: white;
+}
+.headphoneFinder,
+.cityNearU {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  margin: auto;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  width: 95%;
+}
+#back {
+  height: 90%;
+  margin-right: 20%;
+  background-color: rgb(205, 205, 205);
+}
+#mapBack {
+  height: 90%;
+  margin-right: 20%;
+  background-color: rgb(197, 167, 167);
+}
+#mapBack > div {
+  height: 100%;
+}
+#back > div {
+  height: 100%;
+}
+#mapBack > div > img {
+  border-radius: 7px;
+  height: 90%;
+  margin-left: 20%;
+  width: 100%;
+}
+#back > div > img {
+  border-radius: 7px;
+  height: 90%;
+  margin-left: 20%;
+  width: 100%;
+}
+.headphoneFinder > div,
+.cityNearU > div {
+  display: block;
+  justify-content: center;
+  padding-top: 10%;
+}
+#finderText,
+#cityText {
+  width: 72%;
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  margin: auto;
+}
+#finderText h2 {
+  text-align: left;
+  margin: 0px;
+}
+#finderText p {
+  margin-top: 30px;
+}
+
+button {
+  width: 28%;
+  margin-top: 30px;
+  margin-left: 20px;
+  cursor: pointer;
+  border-radius: 20px;
+  background-color: blue;
+  color: white;
+  text-align: center;
+  padding: 10px;
+  border: none;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 10px;
+}
+#begin:hover {
+  background-color: rgb(14, 14, 182);
+}
+.companies {
+  background-color: rgb(205, 205, 205);
+  padding: 30px;
+  margin-top: 90px;
+}
+.companies > div {
+  text-align: center;
+  margin: 50px;
+}
+#companyLogo {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  margin: auto;
+  gap: 50px;
+  margin-top: 50px;
+  width: 100%;
+}
+#seeAll {
+  background-color: white;
+  color: black;
+  font-weight: 800;
+  width: auto;
+  padding: 20px 40px 20px 40px;
+}
+#seeAll:hover {
+  background-color: rgb(205, 205, 205);
+  transition: 0.7s;
+}
+
+.timeline {
+  background-color: rgb(205, 205, 205);
+  padding-top: 50px;
+  padding-bottom: 50px;
+  height: auto;
+}
+.timeline_post {
+  height: 500px;
+}
+.timeline_img {
+  display: flex;
+  width: 60%;
+  height: 100%;
+  margin: auto;
+}
+.timeline_img > div > img {
+  border-radius: 20px 0px 0px 20px;
+  width: 100%;
+  height: 100%;
+}
+.timeline_img > div {
+  width: 50%;
+  height: 100%;
+  border-radius: 0px 20px 20px 0px;
+}
+.timeline_text {
+  display: flex;
+  background-color: rgb(59, 57, 57);
+  color: white;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+}
+.timeline_text h3 {
+  font-size: 130%;
+}
+
+.timeline_text > div {
+  margin: auto;
+  width: 80%;
+}
+
+/* Quotes of famous persons  */
+.quotes {
+  width: 50%;
+  margin: auto;
+  display: none;
+}
+
+.quotes_slide {
+  position: relative;
+  width: 100%;
+  margin: auto;
+  text-align: left;
+  height: 200px;
+  margin-top: 100px;
+}
+.dot {
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+.active,
+.dot:hover {
+  background-color: #717171;
+}
+.prev,
+.next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 16px;
+  margin-top: -22px;
+  color: rgb(5, 5, 5);
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  user-select: none;
+  border: 0.5px solid black;
+}
+.prev {
+  left: 10%;
+}
+.next {
+  right: 10%;
+}
+.prev:hover,
+.next:hover {
+  border-radius: 50%;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+.channel_quotes {
+  position: relative;
+  width: 100%;
+  /* padding: 50px;
+    margin-top: 50px;
+    */
+}
+.bg {
+  margin-top: 50px;
+  display: block;
+  background-color: rgb(195, 213, 218);
+  width: 100%;
+  height: 300px;
+}
+.bate_slide {
+  position: absolute;
+  bottom: 45%;
+  left: 0;
+  right: 5%;
+  overflow: hidden;
+  height: 0;
+  transition: 0.5s ease;
+}
+.channel_quotes:hover .bate_slide {
+  height: 100%;
+}
+.bate_slide > div {
+  display: flex;
+  flex-wrap: wrap;
+  width: 50%;
+  position: absolute;
+  top: 80%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+.cursor {
+  cursor: pointer;
+}
+.row::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.row {
+  background-color: rgb(195, 213, 218);
+  padding-bottom: 50px;
+  display: flex;
+  margin: auto;
+  justify-content: center;
+}
+.column {
+  float: left;
+  width: 16%;
+  margin: auto;
+  padding: 3% 4% 3% 4%;
+  margin-left: 20px;
+}
+.demo {
+  opacity: 0.4;
+}
+.active {
+  opacity: 1;
+}
+.channel_logo {
+  width: 80%;
+  margin: auto;
+}
+.channel_logo img {
+  width: auto;
+}
+.column > img {
+  width: 100%;
+}
+
+.our_values {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin-top: 4vw;
+  margin: auto;
+  padding-top: 3%;
+  padding-bottom: 3%;
+  text-align: center;
+  background-color: rgb(145, 145, 166);
+}
+.our_values > div {
+  display: flex;
+  height: auto;
+  justify-content: space-around;
+  margin-bottom: 3%;
+}
+.our_values > div > div {
+  width: 20%;
+}
+
+.club {
+  background-color: rgb(62, 62, 62);
+  display: flex;
+  text-align: left;
+}
+.club div {
+  width: 50%;
+  margin: 5vw 10vw 6vw 10vw;
+  color: white;
+}
+.club button {
+  background-color: rgb(255, 217, 0);
+  color: black;
+  font-size: 0.6vw;
+  font-weight: 600;
+  padding: 4%;
+}
+.club button:hover {
+  background-color: rgb(239, 205, 15);
+}
+.subscribe_bg {
+  width: 100%;
+  background-image: url("https://cdn.shopify.com/s/files/1/0153/8863/files/Headphone-Zone-Newsletter_2000x.jpg?v=1643375292");
+  height: 450px;
+}
+.subscribe_bg > div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  float: left;
+  height: 100%;
+}
+.subscribe {
+  height: auto;
+  width: 60%;
+  border-radius: 8px;
+  background-color: white;
+}
+.subscribe {
+  padding: 5%;
+  height: auto;
+}
+#enter_mail {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+  height: 80px;
+}
+#email_for_subscribe {
+  padding: 5px;
+  width: 60%;
+  border-radius: 8px;
+  border: 1px solid black;
+}
+.insta_feed {
+  margin: 10% 2% 10% 2%;
+}
+.instagram {
+  margin-top: 3%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(1, auto);
+  gap: 1%;
+  height: auto;
+}
+.center_img > div > img {
+  height: 100%;
+}
+.center_img > div {
+  width: 98%;
+  margin: 1%;
+}
+.insta_column {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, auto);
+  gap: 3%;
+}
+.insta_img {
+  display: block;
+  opacity: 1;
+  cursor: pointer;
+  transition: 0.5s ease;
+  backface-visibility: hidden;
+}
+.design {
+  position: relative;
+}
+.caption {
+  transition: 0.5s ease;
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  font-size: smaller;
+  left: 45%;
+  width: 90%;
+  margin: 5px;
+  height: 100%;
+  transform: translate(-50%, -50%);
+  text-align: left;
+}
+.top {
+  position: absolute;
+  top: 0;
+  margin: 10px;
+}
+.bottom {
+  position: absolute;
+  bottom: 0;
+  margin-top: 40%;
+}
+.design:hover .insta_img {
+  opacity: 0.1;
+}
+.design:hover .caption {
+  opacity: 2;
+}
+
+.instagram img {
+  height: 100%;
+}
+
+.instagram > div {
+  margin: auto;
+}
+
+footer {
+  background: #111;
+  padding: 15px 23px;
+  color: #fff;
+  text-align: center;
+}
