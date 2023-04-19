@@ -1,7 +1,7 @@
 # Headphone Zone <br>
 
 <h3>Tech stacks</h3>
-<h2>HTML, CSS, JS, Local Storage</h2>
+<h2>HTML | CSS | JS | Local Storage</h2>
 <h2>This is a Solo Project</h2>
 <ul>
 <li>Login Functionality</li>
