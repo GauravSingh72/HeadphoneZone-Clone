@@ -1,7 +1,4 @@
-# Headphone Zone <br>
-
-<h3>Tech stacks</h3>
-<h2>HTML | CSS | JS | Local Storage</h2>
+# Headphone Zone is India's first exclusive online store for headphones, earphones and personal Audio devices featuring the world's finest headphones from brands renowned for their sound, design and style.
 <h2>This is a Solo Project</h2>
 <ul>
 <li>Login Functionality</li>
@@ -37,3 +34,5 @@ Here are some Glimpse of My Website...</h1>
   
   <h3>Payment Page</h3>
   <a href="https://ibb.co/TK7yzks"><img src="https://i.ibb.co/9w1PRN7/Screenshot-2023-04-19-at-4-16-57-PM.png" alt="Screenshot-2023-04-19-at-4-16-57-PM" border="0"></a>
+
+# Tech stacks : HTML | CSS | JS | Local Storage
